@@ -53,7 +53,9 @@ export type AnyDict = {[key: string]: any}
 
 export type State = {
   version: number,
-  gptWebsiteCounter?: number,
+  qrCodeHide?: boolean,
+  qrCodeSeenCounter?: number, 
+  speedChangeCounter?: number,
   language?: string,
   fontSize?: number,
   pinByDefault?: boolean,
@@ -85,7 +87,6 @@ export type State = {
   virtualInput?: boolean,
   hideGrant?: boolean,
   circleWidget?: boolean,
-  circleWidgetIcon?: boolean,
   circleInit?: CircleInit,
   freshKeybinds?: boolean
 } & Context
@@ -205,6 +206,7 @@ export type Command = {
   withDuration?: boolean,
   withFilterTarget?: boolean,
   withFilterOption?: boolean,
+  ffName?: string,
   valueType?: "number" | "string" | "modalString" | "adjustMode" | "state",
   hasFeedback?: boolean,
   requiresMedia?: boolean,
@@ -360,7 +362,8 @@ export type URLRule = {
     backdropFx: Fx
   },
   overrideJs?: string,
-  strictness?: URLStrictness
+  strictness?: URLStrictness,
+  titleRestrict?: string 
 }
 
 export enum URLStrictness {

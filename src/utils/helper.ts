@@ -77,6 +77,12 @@ export function isEdge() {
   return isEdgeResult
 }
 
+let isMacResult: boolean
+export function isMac() {
+  isMacResult = isMacResult ?? navigator.userAgent.includes("Mac OS")
+  return isMacResult
+}
+
 let isMobileResult: boolean
 export function isMobile() {
   if (isMobileResult != null) return isMobileResult
@@ -85,7 +91,7 @@ export function isMobile() {
     isMobileResult = data.mobile 
     return isMobileResult
   }
-  isMobileResult = /Mobi|Android|iPhone/i.test(navigator.userAgent)
+  isMobileResult = /Mobi|Android|iPhone|iPad|Tablet/i.test(navigator.userAgent)
   return isMobileResult
 }
 
@@ -357,4 +363,12 @@ export function extractClient(e: PointerEvent | TouchEvent | MouseEvent) {
       clientY = (e as PointerEvent).clientY
   }
   return {clientX, clientY}
+}
+
+export function replaceArgs(raw: string, args: string[]) {
+  let idx = 0;
+  for (let arg of args) {
+    raw = raw.replaceAll(`$${++idx}`, arg);
+  }
+  return raw;
 }
