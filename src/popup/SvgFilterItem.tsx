@@ -15,6 +15,7 @@ import { cn, moveItem, produce } from "@/utils/helper"
 const MOSAIC_DEFAULT = svgFilterInfos["mosaic"].generate()
 const NOISE_DEFAULT = svgFilterInfos["noise"].generate()
 const MOTION_DEFAULT = svgFilterInfos["motion"].generate()
+const DISTORTION_DEFAULT = svgFilterInfos["distortion"].generate()
 
 export function SvgFilterItem(props: {
 	filter: SvgFilter
@@ -465,6 +466,46 @@ export function SvgFilterItem(props: {
 								onChange(
 									produce(filter, (v) => {
 										v.motion.speed = newValue
+									}),
+								)
+							}}
+						/>
+					</>
+				)}
+
+				{/* Distortion */}
+				{filter.type === "distortion" && (
+					<>
+						<SliderPlus
+							label={gvar.gsm.filter.otherFilters.amount}
+							value={filter.distortion.amount}
+							sliderMin={0}
+							sliderMax={100}
+							sliderStep={1}
+							min={-1000}
+							max={1000}
+							default={DISTORTION_DEFAULT.distortion.amount}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.distortion.amount = newValue
+									}),
+								)
+							}}
+						/>
+						<SliderPlus
+							label={gvar.gsm.token.size}
+							value={filter.distortion.size}
+							sliderMin={0}
+							sliderMax={0.99}
+							sliderStep={0.01}
+							min={0}
+							max={0.99}
+							default={DISTORTION_DEFAULT.distortion.size}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.distortion.size = newValue
 									}),
 								)
 							}}

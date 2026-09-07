@@ -215,7 +215,18 @@ export function getDefaultCinemaFilter() {
 	return filters
 }
 
-export type SvgFilterName = "mosaic" | "colorMatrix" | "posterize" | "blur" | "sharpen" | "special" | "custom" | "rgb" | "noise" | "motion"
+export type SvgFilterName =
+	| "mosaic"
+	| "colorMatrix"
+	| "posterize"
+	| "blur"
+	| "sharpen"
+	| "special"
+	| "custom"
+	| "rgb"
+	| "noise"
+	| "motion"
+	| "distortion"
 
 export const SVG_COLOR_MATRIX_PRESETS: MatrixTemplate[] = [
 	{
@@ -564,6 +575,15 @@ export const svgFilterInfos: {
 				size: 0.8,
 				speed: 1,
 				mode: "hard-light",
+			},
+		}),
+	},
+	distortion: {
+		generate: () => ({
+			type: "distortion",
+			distortion: {
+				size: 0.85,
+				amount: 35,
 			},
 		}),
 	},

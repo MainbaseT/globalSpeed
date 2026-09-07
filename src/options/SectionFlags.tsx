@@ -525,8 +525,11 @@ function PromoDismiss() {
 	return (
 		<OptionField>
 			<OptionFieldLabel>
-				<span>{gvar.gsm.options.flags.showPromos}</span>
-				<RegularTooltip title={gvar.gsm.options.flags.showPromosTooltip} align="right" />
+				<span>{"Show promos"}</span>
+				<RegularTooltip
+					title={"Occasional suggestions for our other projects, shown at the bottom of the popup. Turning this off hides them for two weeks."}
+					align="right"
+				/>
 			</OptionFieldLabel>
 			<Toggle
 				aria-label={gvar.gsm.options.flags.showPromos}

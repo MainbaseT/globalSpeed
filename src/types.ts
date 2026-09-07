@@ -467,7 +467,7 @@ export type ItcRelated = {
 }
 
 export type SvgFilter = {
-	type: "mosaic" | "custom" | "colorMatrix" | "blur" | "posterize" | "sharpen" | "special" | "rgb" | "noise" | "motion"
+	type: "mosaic" | "custom" | "colorMatrix" | "blur" | "posterize" | "sharpen" | "special" | "rgb" | "noise" | "motion" | "distortion"
 	enabled?: boolean
 	id?: string
 	text?: string
@@ -476,6 +476,7 @@ export type SvgFilter = {
 	posterize?: number
 	motion?: MotionSvgInit
 	noise?: NoiseSvgInit
+	distortion?: DistortionSvgInit
 	sharpen?: number
 	colorMatrix?: number[]
 	rgb?: number[]
@@ -492,6 +493,11 @@ export type NoiseSvgInit = {
 	size: number
 	speed: number
 	mode: string
+}
+
+export type DistortionSvgInit = {
+	size: number
+	amount: number
 }
 
 export type MosaicSvgInit = {

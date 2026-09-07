@@ -34,9 +34,12 @@ export function ListItem(props: ListItemProps) {
 			)}
 		>
 			{props.label && (
-				<div data-slot="list-item-label" className="cursor-ns-resize select-none" onClick={props.onClearLabel}>
+				<div data-slot="list-item-label" className="cursor-ns-resize select-none">
 					<Tooltip title={gvar.gsm.token.delete}>
-						<span className="inline-block cursor-auto rounded-sm border border-border bg-secondary px-2 py-1 text-md select-auto [&:hover>svg]:w-auto [&:hover>svg]:pl-1.25">
+						<span
+							className="mb-1.25 inline-block cursor-auto rounded-xl border border-border-subtle bg-secondary/75 px-3 py-2 text-lg italic select-auto [&:hover>svg]:w-auto [&:hover>svg]:pl-1.25"
+							onClick={props.onClearLabel}
+						>
 							{props.label}
 							<GoX className="inline-block w-0 overflow-hidden align-middle text-2xl transition-[width,padding] duration-150 ease-out [interpolate-size:allow-keywords]" />
 						</span>

@@ -119,6 +119,18 @@ export const SVG_FILTER_ADDITIONAL: {
 		},
 		isValid: (filter) => filter.noise && filter.noise.speed !== 0 && filter.noise.size % 1 !== 0,
 	},
+	distortion: {
+		format: (filter) => {
+			const d = filter.distortion
+
+			// Larger size means larger, smoother blobs, so a lower base frequency.
+			const baseFrequency = (0.1 * (1 - d.size)).toFixed(5)
+
+			return formatSvgFilter(`<feTurbulence type="fractalNoise" baseFrequency="${baseFrequency}" numOctaves="2" seed="3" result="n"/>
+	      <feDisplacementMap in="SourceGraphic" in2="n" scale="${d.amount}" xChannelSelector="R" yChannelSelector="G"/>`)
+		},
+		isValid: (filter) => filter.distortion && filter.distortion.amount !== 0 && filter.distortion.size < 1,
+	},
 	motion: {
 		format: (filter) => {
 			const m = filter.motion
