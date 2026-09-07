@@ -227,6 +227,10 @@ export type SvgFilterName =
 	| "noise"
 	| "motion"
 	| "distortion"
+	| "levels"
+	| "glow"
+	| "chromatic"
+	| "scanlines"
 
 export const SVG_COLOR_MATRIX_PRESETS: MatrixTemplate[] = [
 	{
@@ -584,6 +588,45 @@ export const svgFilterInfos: {
 			distortion: {
 				size: 0.85,
 				amount: 35,
+				speed: 0,
+			},
+		}),
+	},
+	levels: {
+		generate: () => ({
+			type: "levels",
+			levels: {
+				black: 0,
+				white: 1,
+				gamma: 1,
+			},
+		}),
+	},
+	glow: {
+		generate: () => ({
+			type: "glow",
+			glow: {
+				threshold: 0.6,
+				radius: 2.5,
+				amount: 1,
+			},
+		}),
+	},
+	chromatic: {
+		generate: () => ({
+			type: "chromatic",
+			chromatic: {
+				amount: 3,
+				angle: 0,
+			},
+		}),
+	},
+	scanlines: {
+		generate: () => ({
+			type: "scanlines",
+			scanlines: {
+				spacing: 4,
+				amount: 0.35,
 			},
 		}),
 	},

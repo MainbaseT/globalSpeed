@@ -16,6 +16,9 @@ const MOSAIC_DEFAULT = svgFilterInfos["mosaic"].generate()
 const NOISE_DEFAULT = svgFilterInfos["noise"].generate()
 const MOTION_DEFAULT = svgFilterInfos["motion"].generate()
 const DISTORTION_DEFAULT = svgFilterInfos["distortion"].generate()
+const GLOW_DEFAULT = svgFilterInfos["glow"].generate()
+const CHROMATIC_DEFAULT = svgFilterInfos["chromatic"].generate()
+const SCANLINES_DEFAULT = svgFilterInfos["scanlines"].generate()
 
 export function SvgFilterItem(props: {
 	filter: SvgFilter
@@ -318,7 +321,7 @@ export function SvgFilterItem(props: {
 				{filter.type === "posterize" && (
 					<>
 						<SliderPlus
-							label={gvar.gsm.filter.otherFilters.levels}
+							label={gvar.gsm.filter.otherFilters.posterizeLevels}
 							value={filter.posterize}
 							sliderMin={2}
 							sliderMax={20}
@@ -506,6 +509,217 @@ export function SvgFilterItem(props: {
 								onChange(
 									produce(filter, (v) => {
 										v.distortion.size = newValue
+									}),
+								)
+							}}
+						/>
+						<SliderPlus
+							label={gvar.gsm.command.speed}
+							value={filter.distortion.speed}
+							sliderMin={0}
+							sliderMax={5}
+							sliderStep={0.1}
+							min={0}
+							max={100}
+							default={DISTORTION_DEFAULT.distortion.speed}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.distortion.speed = newValue
+									}),
+								)
+							}}
+						/>
+					</>
+				)}
+
+				{/* Levels */}
+				{filter.type === "levels" && (
+					<>
+						<SliderPlus
+							label={gvar.gsm.filter.otherFilters.blackPoint}
+							value={filter.levels.black}
+							sliderMin={0}
+							sliderMax={1}
+							sliderStep={0.01}
+							min={0}
+							max={1}
+							default={0}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.levels.black = newValue
+									}),
+								)
+							}}
+						/>
+						<SliderPlus
+							label={gvar.gsm.filter.otherFilters.whitePoint}
+							value={filter.levels.white}
+							sliderMin={0}
+							sliderMax={1}
+							sliderStep={0.01}
+							min={0}
+							max={1}
+							default={1}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.levels.white = newValue
+									}),
+								)
+							}}
+						/>
+						<SliderPlus
+							label={gvar.gsm.filter.otherFilters.gamma}
+							value={filter.levels.gamma}
+							sliderMin={0.1}
+							sliderMax={3}
+							sliderStep={0.05}
+							min={0.01}
+							max={10}
+							default={1}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.levels.gamma = newValue
+									}),
+								)
+							}}
+						/>
+					</>
+				)}
+
+				{/* Glow */}
+				{filter.type === "glow" && (
+					<>
+						<SliderPlus
+							label={gvar.gsm.filter.otherFilters.threshold}
+							value={filter.glow.threshold}
+							sliderMin={0}
+							sliderMax={0.99}
+							sliderStep={0.01}
+							min={0}
+							max={0.99}
+							default={GLOW_DEFAULT.glow.threshold}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.glow.threshold = newValue
+									}),
+								)
+							}}
+						/>
+						<SliderPlus
+							label={gvar.gsm.filter.otherFilters.radius}
+							value={filter.glow.radius}
+							sliderMin={0}
+							sliderMax={20}
+							sliderStep={0.5}
+							min={0}
+							max={200}
+							default={GLOW_DEFAULT.glow.radius}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.glow.radius = newValue
+									}),
+								)
+							}}
+						/>
+						<SliderPlus
+							label={gvar.gsm.filter.otherFilters.amount}
+							value={filter.glow.amount}
+							sliderMin={0}
+							sliderMax={3}
+							sliderStep={0.05}
+							min={0}
+							max={100}
+							default={GLOW_DEFAULT.glow.amount}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.glow.amount = newValue
+									}),
+								)
+							}}
+						/>
+					</>
+				)}
+
+				{/* Chromatic aberration */}
+				{filter.type === "chromatic" && (
+					<>
+						<SliderPlus
+							label={gvar.gsm.filter.otherFilters.amount}
+							value={filter.chromatic.amount}
+							sliderMin={0}
+							sliderMax={20}
+							sliderStep={0.5}
+							min={-200}
+							max={200}
+							default={CHROMATIC_DEFAULT.chromatic.amount}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.chromatic.amount = newValue
+									}),
+								)
+							}}
+						/>
+						<SliderPlus
+							label={gvar.gsm.filter.otherFilters.angle}
+							value={filter.chromatic.angle}
+							sliderMin={0}
+							sliderMax={360}
+							sliderStep={1}
+							min={-360}
+							max={360}
+							default={CHROMATIC_DEFAULT.chromatic.angle}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.chromatic.angle = newValue
+									}),
+								)
+							}}
+						/>
+					</>
+				)}
+
+				{/* Scanlines */}
+				{filter.type === "scanlines" && (
+					<>
+						<SliderPlus
+							label={gvar.gsm.filter.otherFilters.spacing}
+							value={filter.scanlines.spacing}
+							sliderMin={2}
+							sliderMax={40}
+							sliderStep={1}
+							min={2}
+							max={500}
+							default={SCANLINES_DEFAULT.scanlines.spacing}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.scanlines.spacing = newValue
+									}),
+								)
+							}}
+						/>
+						<SliderPlus
+							label={gvar.gsm.filter.otherFilters.amount}
+							value={filter.scanlines.amount}
+							sliderMin={0}
+							sliderMax={1}
+							sliderStep={0.01}
+							min={0}
+							max={1}
+							default={SCANLINES_DEFAULT.scanlines.amount}
+							onChange={(newValue) => {
+								onChange(
+									produce(filter, (v) => {
+										v.scanlines.amount = newValue
 									}),
 								)
 							}}

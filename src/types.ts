@@ -467,7 +467,22 @@ export type ItcRelated = {
 }
 
 export type SvgFilter = {
-	type: "mosaic" | "custom" | "colorMatrix" | "blur" | "posterize" | "sharpen" | "special" | "rgb" | "noise" | "motion" | "distortion"
+	type:
+		| "mosaic"
+		| "custom"
+		| "colorMatrix"
+		| "blur"
+		| "posterize"
+		| "sharpen"
+		| "special"
+		| "rgb"
+		| "noise"
+		| "motion"
+		| "distortion"
+		| "levels"
+		| "glow"
+		| "chromatic"
+		| "scanlines"
 	enabled?: boolean
 	id?: string
 	text?: string
@@ -477,6 +492,10 @@ export type SvgFilter = {
 	motion?: MotionSvgInit
 	noise?: NoiseSvgInit
 	distortion?: DistortionSvgInit
+	levels?: LevelsSvgInit
+	glow?: GlowSvgInit
+	chromatic?: ChromaticSvgInit
+	scanlines?: ScanlinesSvgInit
 	sharpen?: number
 	colorMatrix?: number[]
 	rgb?: number[]
@@ -497,6 +516,29 @@ export type NoiseSvgInit = {
 
 export type DistortionSvgInit = {
 	size: number
+	amount: number
+	speed: number
+}
+
+export type LevelsSvgInit = {
+	black: number
+	white: number
+	gamma: number
+}
+
+export type GlowSvgInit = {
+	threshold: number
+	radius: number
+	amount: number
+}
+
+export type ChromaticSvgInit = {
+	amount: number
+	angle: number
+}
+
+export type ScanlinesSvgInit = {
+	spacing: number
 	amount: number
 }
 

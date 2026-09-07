@@ -303,9 +303,23 @@ export type Gsm = {
 			/** Stretch Y */
 			stretchY: string
 			/** Levels */
-			levels: string
+			posterizeLevels: string
 			/** Amount */
 			amount: string
+			/** Black point */
+			blackPoint: string
+			/** White point */
+			whitePoint: string
+			/** Gamma */
+			gamma: string
+			/** Angle */
+			angle: string
+			/** Threshold */
+			threshold: string
+			/** Radius */
+			radius: string
+			/** Spacing */
+			spacing: string
 			/** Vertical */
 			vertical: string
 			/** Horizontal */
@@ -316,6 +330,14 @@ export type Gsm = {
 			motion: string
 			/** Distortion */
 			distortion: string
+			/** Glow */
+			glow: string
+			/** Chromatic aberration */
+			chromatic: string
+			/** Scanlines */
+			scanlines: string
+			/** Levels */
+			levels: string
 			/** Noise */
 			noise: string
 			/** Multiply */
